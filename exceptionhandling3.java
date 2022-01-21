@@ -6,24 +6,34 @@
  *  
  */
 package sample;
+
+import java.nio.file.FileSystemNotFoundException;
+
 class FileNotFoundException extends Exception {
 }
+
 public class exceptionhandling3 {
-	void method3() {
+	void method3() throws NullPointerException {
 		throw new NullPointerException();
 	}
-	void method2() {
+
+	void method2() throws NullPointerException {
 		method3();
 	}
+
 	public static void main(String[] args) {
-		exceptionhandling3 eh =new exceptionhandling3();
+		exceptionhandling3 eh = new exceptionhandling3();
 		try {
-		eh.method2();
-		throw new FileNotFoundException();
-		}
-		catch(Exception e) {
+			eh.method2();
+			
+			
+		} catch (NullPointerException e) {
 			System.out.print(e);
+			
 		}
+		try {
+			throw new FileSystemNotFoundException();
+		}catch(Exception e){System.out.print(e);}
 	}
 
 }
